@@ -4,7 +4,7 @@ version = "0.1.0"
 description = ""
 authors = ["Valentin Khomutenko <valentine.khomutenko@gmail.com>"]
 packages = [
-    { include = "**/*.py", from = "task_manager" },
+    { include = "**/*", from = "task_manager" },
 ]
 
 
