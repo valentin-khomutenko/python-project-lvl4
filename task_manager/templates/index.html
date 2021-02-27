@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block title %} Task Manager {% endblock %}
+{% block content %}
+<div class="jumbotron">
+    <div class="container">
+        <h1 class="display-4">
+            {% translate "The only tool for your productivity" %}</h1>
+        <p class="lead">
+            {% translate "Best in class task management system for people who value their time." %}
+        </p>
+        <p class="mb-4">
+            <small>
+                {% translate "And we have nothing to do with Trello." %}
+            </small>
+        </p>
+        <a class="btn btn-primary">
+            {% translate "Explore" %}
+        </a>
+    </div>
+</div>
+{% endblock %}
+
