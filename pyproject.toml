@@ -4,9 +4,8 @@ version = "0.1.0"
 description = ""
 authors = ["Valentin Khomutenko <valentine.khomutenko@gmail.com>"]
 packages = [
-    { include = "**/*.py", from = "task_manager" },
+    { include = "task_manager" },
 ]
-
 
 [tool.poetry.dependencies]
 python = "^3.9"
@@ -21,6 +20,7 @@ mypy = "^0.812"
 django-stubs = "^1.7.0"
 pytest = "^6.2.2"
 pytest-cov = "^2.11.1"
+pytest-django = "^4.1.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
