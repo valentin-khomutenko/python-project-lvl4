@@ -1,8 +1,8 @@
 up:
-	gunicorn task_manager.wsgi
+	gunicorn task_manager.server.wsgi
 
 up.dev:
-	poetry run python3 task_manager/manage.py runserver
+	poetry run python task_manager/manage.py runserver
 
 install:
 	poetry install
