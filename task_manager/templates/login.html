@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load bootstrap4 %}
+
+{% block title %} Create user {% endblock %}
+{% block content %}
+<div class="container wrapper">
+    <h1 class="display-4">Login</h1>
+    <form method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons %}
+        <input class="btn btn-primary" type="submit" value="Login">
+        {% endbuttons %}
+    </form>
+</div>
+{% endblock %}
+

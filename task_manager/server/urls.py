@@ -22,7 +22,8 @@ import task_manager.users.urls  # type: ignore
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index, name='index')
+    path('login/', views.Login.as_view(), name='login'),
+    path('', views.Index.as_view(), name='index')
 ]
 
 urlpatterns.extend(task_manager.users.urls.urlpatterns)
