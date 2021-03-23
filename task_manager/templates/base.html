@@ -23,7 +23,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto justify-content-end">
                 <li class="nav-item mr-5">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{% url 'list_users' %}">
                         {% translate "Users" %}
                     </a>
                 </li>
@@ -35,7 +35,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'logout' %}">
-                        Logout
+                        {% translate "Logout" %}
                     </a>
                 </li>
                 {% else %}
