@@ -1,8 +1,8 @@
 up:
-	gunicorn task_manager.wsgi
+	gunicorn task_manager.server.wsgi
 
 up.dev:
-	poetry run python3 task_manager/manage.py runserver
+	poetry run python task_manager/manage.py runserver
 
 install:
 	poetry install
@@ -10,6 +10,9 @@ install:
 lint:
 	poetry run flake8 task_manager
 	poetry run mypy task_manager
+
+test:
+	poetry run pytest --cov-report term --cov-report xml --cov=task_manager  tests
 
 migrate:
 	poetry run python3 task_manager/manage.py makemigrations

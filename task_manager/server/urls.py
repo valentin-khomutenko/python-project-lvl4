@@ -15,9 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-import task_manager.views
+from . import views
+
+# TODO: fix mypy
+import task_manager.users.urls  # type: ignore
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', task_manager.views.index)
+    path('login/', views.Login.as_view(), name='login'),
+    path('logout/', views.Logout.as_view(), name='logout'),
+    path('', views.Index.as_view(), name='index')
 ]
+
+urlpatterns.extend(task_manager.users.urls.urlpatterns)
