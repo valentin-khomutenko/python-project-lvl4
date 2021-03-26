@@ -8,12 +8,12 @@ install:
 	poetry install
 
 format:
-	poetry run autopep8 -r --in-place task_manager
+	poetry run autopep8 -r --in-place task_manager tests
 
 lint:
-	poetry run autopep8 -r --diff --exit-code task_manager
-	poetry run flake8 task_manager
-	poetry run mypy task_manager
+	poetry run autopep8 -r --diff --exit-code task_manager tests
+	poetry run flake8 task_manager tests
+	poetry run mypy task_manager tests
 
 test:
 	poetry run pytest --cov-report term --cov-report xml --cov=task_manager  tests

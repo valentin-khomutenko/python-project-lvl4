@@ -6,6 +6,7 @@ from django.views.generic import CreateView, ListView, DeleteView
 from . import forms
 from . import mixins
 
+
 class CreateUser(SuccessMessageMixin, CreateView):
     model = django.contrib.auth.get_user_model()
     form_class = forms.CreateUser

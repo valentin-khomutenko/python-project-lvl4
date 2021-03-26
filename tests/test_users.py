@@ -34,7 +34,8 @@ def test_user_can_delete_only_themselves(client: django.test.Client, django_user
     self = django_user_model.objects.create_user(username='testuser', password='mysecretpass')
     self.save()
 
-    other_user = django_user_model.objects.create_user(username='testuser2', password='mysecretpass')
+    other_user = django_user_model.objects.create_user(
+        username='testuser2', password='mysecretpass')
     other_user.save()
 
     logged_in = client.login(username=self.username, password='mysecretpass')
@@ -48,4 +49,3 @@ def test_user_can_delete_only_themselves(client: django.test.Client, django_user
 
     response = client.post(f'/users/{other_user.id}/delete/')
     assert response.status_code == HTTPStatus.FORBIDDEN
-
