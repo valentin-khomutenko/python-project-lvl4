@@ -1,0 +1,18 @@
+{% extends "content.html" %}
+
+{% load i18n %}
+{% load bootstrap4 %}
+
+{% block title %}{% block content_title %}{% translate "Delete user" %}{% endblock %}{% endblock %}
+{% block content_body %}
+<p>
+    {% translate 'Are you sure that you want to delete user' %} {{ user.username }}?
+</p>
+<form method="post" class="mt-4">
+    {% csrf_token %}
+    {% buttons %}
+    <input class="btn btn-danger" type="submit" value="{% translate 'Delete user' %}">
+    {% endbuttons %}
+</form>
+{% endblock %}
+

@@ -7,7 +7,11 @@ up.dev:
 install:
 	poetry install
 
+format:
+	poetry run autopep8 -r --in-place task_manager
+
 lint:
+	poetry run autopep8 -r --diff --exit-code task_manager
 	poetry run flake8 task_manager
 	poetry run mypy task_manager
 
