@@ -22,15 +22,10 @@ migrate:
 	poetry run python3 task_manager/manage.py makemigrations
 	poetry run python3 task_manager/manage.py migrate
 
-check-locales: locales compiled-locales
-	if [[ `git status task_manager/locale --porcelain` ]]; then \
-  		echo "locales is not up to date, did you run 'make locales && make compiled-locales'?" \
-  		exit 1 \
-	fi
-
-
 locales:
 	cd task_manager && poetry run django-admin makemessages -l ru
 
 compiled-locales:
 	cd task_manager && poetry run django-admin compilemessages -l ru
+
+self-check: format lint test

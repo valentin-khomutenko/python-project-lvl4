@@ -27,7 +27,6 @@ jobs:
       - name: Run linter
         run: |
           make lint
-          make check-locales
 
       - name: Run tests
         uses: paambaati/codeclimate-action@v2.6.0
