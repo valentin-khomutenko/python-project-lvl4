@@ -1,19 +1,16 @@
-{% extends "base.html" %}
+{% extends "content.html" %}
 
 {% load i18n %}
 {% load bootstrap4 %}
 
-{% block title %} Create user {% endblock %}
-{% block content %}
-<div class="container wrapper">
-    <h1 class="display-4">Sign up</h1>
-    <form method="post">
-        {% csrf_token %}
-        {% bootstrap_form form %}
-        {% buttons %}
-        <input class="btn btn-primary" type="submit" value="Sign up">
-        {% endbuttons %}
-    </form>
-</div>
+{% block title %}{% block content_title %}{% translate "Create user" %}{% endblock %}{% endblock %}
+{% block content_body %}
+<form method="post">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% buttons %}
+    <input class="btn btn-primary" type="submit" value="{% translate 'Sign up' %}">
+    {% endbuttons %}
+</form>
 {% endblock %}
 
