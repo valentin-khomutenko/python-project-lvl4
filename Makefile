@@ -23,7 +23,10 @@ migrate:
 	poetry run python3 task_manager/manage.py migrate
 
 check-locales: locales compiled-locales
-	./check_locales.sh
+	if [[ `git status task_manager/locale --porcelain` ]]; then \
+  		echo "locales is not up to date, did you run 'make locales && make compiled-locales'?" \
+  		exit 1 \
+	fi
 
 
 locales:
