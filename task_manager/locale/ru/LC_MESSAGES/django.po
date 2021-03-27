@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-27 23:04+0300\n"
+"POT-Creation-Date: 2021-03-27 09:18+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,34 +20,91 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: templates/index.html:10
+#: templates/base.html:17
 msgid "Trellolo"
 msgstr "Trellolo"
 
-#: templates/index.html:19
+#: templates/base.html:27 templates/users/list.html:6
 msgid "Users"
 msgstr "Пользователи"
 
-#: templates/index.html:24
+#: templates/base.html:38
+msgid "Logout"
+msgstr ""
+
+#: templates/base.html:44 templates/login.html:6 templates/login.html:12
 msgid "Login"
 msgstr "Войти"
 
-#: templates/index.html:29
+#: templates/base.html:49
 msgid "Sign Up"
 msgstr "Зарегистрироваться"
 
-#: templates/index.html:39
+#: templates/index.html:10
 msgid "The only tool for your productivity"
 msgstr "Единственный необходимый инструмент для вашей продуктивности"
 
-#: templates/index.html:41
+#: templates/index.html:13
 msgid "Best in class task management system for people who value their time."
-msgstr "Лучшая система для управления задачами для людей, которые ценят свое время."
+msgstr ""
+"Лучшая система для управления задачами для людей, которые ценят свое время."
 
-#: templates/index.html:45
+#: templates/index.html:17
 msgid "And we have nothing to do with Trello."
 msgstr "И мы не имеем никакого отношения к Trello."
 
-#: templates/index.html:49
+#: templates/index.html:21
 msgid "Explore"
 msgstr "Узнать больше"
+
+#: templates/users/create.html:6
+msgid "Create user"
+msgstr ""
+
+#: templates/users/create.html:12
+#, fuzzy
+#| msgid "Sign Up"
+msgid "Sign up"
+msgstr "Зарегистрироваться"
+
+#: templates/users/delete.html:6 templates/users/delete.html:14
+msgid "Delete user"
+msgstr ""
+
+#: templates/users/delete.html:9
+msgid "Are you sure that you want to delete user"
+msgstr ""
+
+#: templates/users/list.html:11
+msgid "ID"
+msgstr ""
+
+#: templates/users/list.html:12
+#, fuzzy
+#| msgid "Users"
+msgid "Username"
+msgstr "Пользователи"
+
+#: templates/users/list.html:13
+msgid "Full name"
+msgstr ""
+
+#: templates/users/list.html:14
+msgid "Created at"
+msgstr ""
+
+#: templates/users/list.html:27
+msgid "Изменить"
+msgstr ""
+
+#: templates/users/list.html:28
+msgid "Удалить"
+msgstr ""
+
+#: templates/users/update.html:6
+msgid "Edit user"
+msgstr ""
+
+#: templates/users/update.html:12
+msgid "Edit"
+msgstr ""
