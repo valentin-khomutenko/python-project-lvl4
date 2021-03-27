@@ -87,7 +87,7 @@ def test_update_user(client: django.test.Client, django_user_model):
     assert response.status_code == HTTPStatus.OK
 
     update_form = {
-       'username': 'testuser_updated',
+        'username': 'testuser_updated',
         'first_name': 'John_updated',
         'last_name': 'Doe_updated',
         'password1': 'mysecretpass',
@@ -154,7 +154,7 @@ def test_user_can_update_only_themselves(client: django.test.Client, django_user
     assert response.status_code == HTTPStatus.FORBIDDEN
 
     update_form = {
-       'username': 'testuser_updated',
+        'username': 'testuser_updated',
         'first_name': 'John_updated',
         'last_name': 'Doe_updated',
         'password1': 'mysecretpass',
