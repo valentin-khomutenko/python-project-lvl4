@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-27 09:32+0300\n"
+"POT-Creation-Date: 2021-04-01 09:20+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,15 +28,19 @@ msgstr "Trellolo"
 msgid "Users"
 msgstr "Пользователи"
 
-#: templates/base.html:38
-msgid "Logout"
-msgstr ""
+#: templates/base.html:33 templates/statuses/list.html:6
+msgid "Statuses"
+msgstr "Статусы"
 
-#: templates/base.html:44 templates/login.html:6 templates/login.html:12
+#: templates/base.html:45
+msgid "Logout"
+msgstr "Выйти"
+
+#: templates/base.html:51 templates/login.html:6 templates/login.html:12
 msgid "Login"
 msgstr "Войти"
 
-#: templates/base.html:49
+#: templates/base.html:56
 msgid "Sign Up"
 msgstr "Зарегистрироваться"
 
@@ -57,9 +61,41 @@ msgstr "И мы не имеем никакого отношения к Trello."
 msgid "Explore"
 msgstr "Узнать больше"
 
+#: templates/statuses/create.html:6
+msgid "Create status"
+msgstr "Создать статус"
+
+#: templates/statuses/create.html:12
+msgid "Create"
+msgstr "Создать"
+
+#: templates/statuses/list.html:8
+msgid "Create new"
+msgstr "Добавить новый"
+
+#: templates/statuses/list.html:12 templates/users/list.html:11
+msgid "ID"
+msgstr "ID"
+
+#: templates/statuses/list.html:13
+msgid "Name"
+msgstr "Имя"
+
+#: templates/statuses/list.html:14 templates/users/list.html:14
+msgid "Created at"
+msgstr "Время создания"
+
+#: templates/statuses/list.html:25
+msgid "Edit"
+msgstr "Изменить"
+
+#: templates/statuses/list.html:26
+msgid "Удалить"
+msgstr "Удалить"
+
 #: templates/users/create.html:6
 msgid "Create user"
-msgstr ""
+msgstr "Зарегистрироваться"
 
 #: templates/users/create.html:12
 #, fuzzy
@@ -69,15 +105,11 @@ msgstr "Зарегистрироваться"
 
 #: templates/users/delete.html:6 templates/users/delete.html:14
 msgid "Delete user"
-msgstr ""
+msgstr "Удалить пользователя"
 
 #: templates/users/delete.html:9
 msgid "Are you sure that you want to delete user"
-msgstr ""
-
-#: templates/users/list.html:11
-msgid "ID"
-msgstr ""
+msgstr "Вы уверены, что хотите удалить пользователя"
 
 #: templates/users/list.html:12
 #, fuzzy
@@ -87,24 +119,14 @@ msgstr "Пользователи"
 
 #: templates/users/list.html:13
 msgid "Full name"
-msgstr ""
-
-#: templates/users/list.html:14
-msgid "Created at"
-msgstr ""
-
-#: templates/users/list.html:27
-msgid "Изменить"
-msgstr ""
+msgstr "Полное имя"
 
 #: templates/users/list.html:28
-msgid "Удалить"
-msgstr ""
+#, fuzzy
+#| msgid "Delete user"
+msgid "Delete"
+msgstr "Удалить пользователя"
 
 #: templates/users/update.html:6
 msgid "Edit user"
-msgstr ""
-
-#: templates/users/update.html:12
-msgid "Edit"
-msgstr ""
+msgstr "Изменить пользователя"

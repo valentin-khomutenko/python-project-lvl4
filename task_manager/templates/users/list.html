@@ -24,8 +24,8 @@
 
         <td>
             {% if listed_user.id == user.id %}
-            <a href="{% url 'update_user' user.id %}">{% translate "Изменить" %}</a><br>
-            <a href="{% url 'delete_user' user.id %}">{% translate "Удалить" %}</a>
+            <a href="{% url 'update_user' user.id %}">{% translate "Edit" %}</a><br>
+            <a href="{% url 'delete_user' user.id %}">{% translate "Delete" %}</a>
             {% endif %}
         </td>
     </tr>
