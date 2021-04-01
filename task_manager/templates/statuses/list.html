@@ -1,0 +1,32 @@
+{% extends "content.html" %}
+
+{% load i18n %}
+{% load bootstrap4 %}
+
+{% block title %}{% block content_title %}{% translate "Statuses" %}{% endblock %}{% endblock %}
+{% block content_body %}
+<table class="table table-striped text-left">
+    <thead>
+    <tr>
+        <th>{% translate "ID" %}</th>
+        <th>{% translate "Name" %}</th>
+        <th>{% translate "Created at" %}</th>
+        <th></th> <!-- actions -->
+    </tr>
+    </thead>
+    {% for status in object_list %}
+    <tr>
+        <td>{{ status.id }}</td>
+        <td>{{ status.name }}</td>
+        <td>{{ status.created_at }}</td>
+        <td>
+<!--            {% if listed_user.id == user.id %}-->
+<!--            <a href="{% url 'update_user' user.id %}">{% translate "Изменить" %}</a><br>-->
+<!--            <a href="{% url 'delete_user' user.id %}">{% translate "Удалить" %}</a>-->
+<!--            {% endif %}-->
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
+
