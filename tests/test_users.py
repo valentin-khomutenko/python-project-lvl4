@@ -11,28 +11,8 @@ def test_get_users(client: django.test.Client):
 
 
 @pytest.mark.django_db
-def test_delete_user(client: django.test.Client, django_user_model):
-    user = django_user_model.objects.create_user(username='testuser', password='mysecretpass')
-    user.save()
-
-    logged_in = client.login(username=user.username, password='mysecretpass')
-    assert logged_in
-
-    response = client.get(f'/users/{user.id}/delete/')
-    assert response.status_code == HTTPStatus.OK
-
-    response = client.post(f'/users/{user.id}/delete/')
-    assert response.status_code == HTTPStatus.FOUND
-    assert response.url == '/login/'
-
-    response = client.get(f'/users/{user.id}/delete/')
-    assert response.status_code == HTTPStatus.NOT_FOUND
-
-
-@pytest.mark.django_db
-def test_only_logged_in_client_can_perform_delete(client: django.test.Client, django_user_model):
-    user = django_user_model.objects.create_user(username='testuser', password='mysecretpass')
-    user.save()
+def test_delete_user_fails_if_not_logged_in(client: django.test.Client, make_test_user):
+    user, _ = make_test_user()
     user_id = user.id
 
     response = client.get(f'/users/{user_id}/delete/')
@@ -48,16 +28,13 @@ def test_only_logged_in_client_can_perform_delete(client: django.test.Client, dj
 
 
 @pytest.mark.django_db
-def test_user_can_delete_only_themselves(client: django.test.Client, django_user_model):
-    self = django_user_model.objects.create_user(username='testuser', password='mysecretpass')
-    self.save()
+def test_delete_user_fails_if_delete_another_user(client: django.test.Client, make_test_user):
+    self, self_password = make_test_user(username='testuser', password='mysecretpass')
 
-    other_user = django_user_model.objects.create_user(
-        username='testuser2', password='mysecretpass')
-    other_user.save()
+    other_user, _ = make_test_user(username='testuser2', password='mysecretpass')
     other_user_id = other_user.id
 
-    logged_in = client.login(username=self.username, password='mysecretpass')
+    logged_in = client.login(username=self.username, password=self_password)
     assert logged_in
 
     response = client.get(f'/users/{other_user_id}/delete/')
@@ -71,47 +48,31 @@ def test_user_can_delete_only_themselves(client: django.test.Client, django_user
 
 
 @pytest.mark.django_db
-def test_update_user(client: django.test.Client, django_user_model):
-    user = django_user_model.objects.create_user(
-        username='testuser',
-        first_name='John',
-        last_name='Doe',
-        password='mysecretpass'
-    )
-    user.save()
+def test_delete_user(client: django.test.Client, make_test_user):
+    user, password = make_test_user()
 
-    logged_in = client.login(username=user.username, password='mysecretpass')
+    logged_in = client.login(username=user.username, password=password)
     assert logged_in
 
-    response = client.get(f'/users/{user.id}/update/')
+    response = client.get(f'/users/{user.id}/delete/')
     assert response.status_code == HTTPStatus.OK
 
-    update_form = {
-        'username': 'testuser_updated',
-        'first_name': 'John_updated',
-        'last_name': 'Doe_updated',
-        'password1': 'mysecretpass',
-        'password2': 'mysecretpass',
-    }
-    response = client.post(f'/users/{user.id}/update/', update_form)
+    response = client.post(f'/users/{user.id}/delete/')
     assert response.status_code == HTTPStatus.FOUND
-    assert response.url == '/users/'
+    assert response.url == '/login/'
 
-    user.refresh_from_db()
-    assert user.username == 'testuser_updated'
-    assert user.first_name == 'John_updated'
-    assert user.last_name == 'Doe_updated'
+    response = client.get(f'/users/{user.id}/delete/')
+    assert response.status_code == HTTPStatus.NOT_FOUND
 
 
 @pytest.mark.django_db
-def test_only_logged_in_client_can_perform_update(client: django.test.Client, django_user_model):
-    user = django_user_model.objects.create_user(
+def test_update_user_fails_if_not_logged_in(client: django.test.Client, make_test_user):
+    user, password = make_test_user(
         username='testuser',
         first_name='John',
         last_name='Doe',
         password='mysecretpass'
     )
-    user.save()
 
     response = client.get(f'/users/{user.id}/update/')
     assert response.status_code == HTTPStatus.FOUND
@@ -135,19 +96,16 @@ def test_only_logged_in_client_can_perform_update(client: django.test.Client, dj
 
 
 @pytest.mark.django_db
-def test_user_can_update_only_themselves(client: django.test.Client, django_user_model):
-    self = django_user_model.objects.create_user(username='self', password='selfpassword')
-    self.save()
-
-    other_user = django_user_model.objects.create_user(
+def test_update_user_fails_if_update_another_user(client: django.test.Client, make_test_user):
+    self, self_password = make_test_user(username='self', password='selfpassword')
+    other_user, _ = make_test_user(
         username='testuser',
         first_name='John',
         last_name='Doe',
         password='mysecretpass'
     )
-    other_user.save()
 
-    logged_in = client.login(username=self.username, password='selfpassword')
+    logged_in = client.login(username=self.username, password=self_password)
     assert logged_in
 
     response = client.get(f'/users/{other_user.id}/update/')
@@ -167,3 +125,35 @@ def test_user_can_update_only_themselves(client: django.test.Client, django_user
     assert other_user.username == 'testuser'
     assert other_user.first_name == 'John'
     assert other_user.last_name == 'Doe'
+
+
+@pytest.mark.django_db
+def test_update_user(client: django.test.Client, make_test_user):
+    user, password = make_test_user(
+        username='testuser',
+        first_name='John',
+        last_name='Doe',
+        password='mysecretpass'
+    )
+
+    logged_in = client.login(username=user.username, password=password)
+    assert logged_in
+
+    response = client.get(f'/users/{user.id}/update/')
+    assert response.status_code == HTTPStatus.OK
+
+    update_form = {
+        'username': 'testuser_updated',
+        'first_name': 'John_updated',
+        'last_name': 'Doe_updated',
+        'password1': 'mysecretpass',
+        'password2': 'mysecretpass',
+    }
+    response = client.post(f'/users/{user.id}/update/', update_form)
+    assert response.status_code == HTTPStatus.FOUND
+    assert response.url == '/users/'
+
+    user.refresh_from_db()
+    assert user.username == 'testuser_updated'
+    assert user.first_name == 'John_updated'
+    assert user.last_name == 'Doe_updated'

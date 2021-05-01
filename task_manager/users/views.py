@@ -1,3 +1,5 @@
+from http import HTTPStatus
+
 import django.contrib.auth
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
@@ -12,6 +14,10 @@ class CreateUser(SuccessMessageMixin, CreateView):
     form_class = forms.CreateUser
     template_name = 'users/create.html'
     success_url = reverse_lazy('login')
+
+    def form_invalid(self, form):
+        return self.render_to_response(self.get_context_data(form=form),
+                                       status=HTTPStatus.UNPROCESSABLE_ENTITY)
 
 
 class ListUsers(ListView):
@@ -30,3 +36,7 @@ class UpdateUser(SuccessMessageMixin, mixins.CheckSelfUser, UpdateView):
     template_name = 'users/update.html'
     form_class = forms.CreateUser
     success_url = reverse_lazy('list_users')
+
+    def form_invalid(self, form):
+        return self.render_to_response(self.get_context_data(form=form),
+                                       status=HTTPStatus.UNPROCESSABLE_ENTITY)
