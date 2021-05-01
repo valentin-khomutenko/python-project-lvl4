@@ -19,6 +19,7 @@ from . import views
 
 # TODO: fix mypy
 import task_manager.users.urls  # type: ignore
+import task_manager.statuses.urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,3 +29,4 @@ urlpatterns = [
 ]
 
 urlpatterns.extend(task_manager.users.urls.urlpatterns)
+urlpatterns.extend(task_manager.statuses.urls.urlpatterns)
