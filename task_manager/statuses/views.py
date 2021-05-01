@@ -3,7 +3,7 @@ from django.views.generic import ListView, CreateView, DeleteView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from . import models
 from . import forms
-from task_manager.mixins.views import RaiseUnprocessableEnittyIfInvalidMixin  # type: ignore
+from task_manager.mixins.views import RaiseUnprocessableEnittyIfInvalidMixin
 
 
 class ListStatuses(LoginRequiredMixin, ListView):
