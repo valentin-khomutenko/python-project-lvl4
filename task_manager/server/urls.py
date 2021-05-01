@@ -18,7 +18,7 @@ from django.urls import path
 from . import views
 
 # TODO: fix mypy
-import task_manager.users.urls  # type: ignore
+import task_manager.users.urls
 import task_manager.statuses.urls
 import task_manager.tasks.urls
 

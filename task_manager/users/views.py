@@ -5,7 +5,7 @@ from django.views.generic import CreateView, ListView, DeleteView, UpdateView
 
 from . import forms
 from . import mixins
-from task_manager.mixins.views import RaiseUnprocessableEnittyIfInvalidMixin  # type: ignore
+from task_manager.mixins.views import RaiseUnprocessableEnittyIfInvalidMixin
 
 
 class CreateUser(SuccessMessageMixin, RaiseUnprocessableEnittyIfInvalidMixin, CreateView):

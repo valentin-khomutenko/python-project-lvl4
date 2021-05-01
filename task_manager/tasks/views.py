@@ -2,7 +2,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DeleteView, UpdateView
 
-from task_manager.mixins.views import RaiseUnprocessableEnittyIfInvalidMixin  # type: ignore
+from task_manager.mixins.views import RaiseUnprocessableEnittyIfInvalidMixin
 from task_manager.tasks import models
 from task_manager.tasks.forms import TaskForm
 
