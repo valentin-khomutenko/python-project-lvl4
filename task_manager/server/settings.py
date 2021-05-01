@@ -14,8 +14,10 @@ import os
 from django.urls import reverse_lazy
 from dotenv import load_dotenv
 from pathlib import Path
+import django_heroku  # type: ignore
 
 load_dotenv()
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -133,3 +135,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'static'
+
+django_heroku.settings(locals())
