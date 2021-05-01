@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-01 09:20+0300\n"
+"POT-Creation-Date: 2021-05-01 18:29+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -69,6 +69,14 @@ msgstr "Создать статус"
 msgid "Create"
 msgstr "Создать"
 
+#: templates/statuses/delete.html:6 templates/statuses/delete.html:14
+msgid "Delete status"
+msgstr "Удалить статус"
+
+#: templates/statuses/delete.html:9
+msgid "Are you sure that you want to delete status"
+msgstr "Вы уверены, что хотите удалить статус"
+
 #: templates/statuses/list.html:8
 msgid "Create new"
 msgstr "Добавить новый"
@@ -85,13 +93,18 @@ msgstr "Имя"
 msgid "Created at"
 msgstr "Время создания"
 
-#: templates/statuses/list.html:25
+#: templates/statuses/list.html:24 templates/statuses/update.html:12
+#: templates/users/list.html:27 templates/users/update.html:12
 msgid "Edit"
 msgstr "Изменить"
 
-#: templates/statuses/list.html:26
-msgid "Удалить"
-msgstr "Удалить"
+#: templates/statuses/list.html:25 templates/users/list.html:28
+msgid "Delete"
+msgstr "Удалить пользователя"
+
+#: templates/statuses/update.html:6
+msgid "Edit status"
+msgstr "Изменить пользователя"
 
 #: templates/users/create.html:6
 msgid "Create user"
@@ -120,12 +133,6 @@ msgstr "Пользователи"
 #: templates/users/list.html:13
 msgid "Full name"
 msgstr "Полное имя"
-
-#: templates/users/list.html:28
-#, fuzzy
-#| msgid "Delete user"
-msgid "Delete"
-msgstr "Удалить пользователя"
 
 #: templates/users/update.html:6
 msgid "Edit user"
