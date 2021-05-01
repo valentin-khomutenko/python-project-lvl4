@@ -21,10 +21,8 @@
         <td>{{ status.name }}</td>
         <td>{{ status.created_at }}</td>
         <td>
-<!--            {% if listed_user.id == user.id %}-->
-<!--            <a href="{% url 'update_user' user.id %}">{% translate "Изменить" %}</a><br>-->
-<!--            <a href="{% url 'delete_user' user.id %}">{% translate "Удалить" %}</a>-->
-<!--            {% endif %}-->
+            <a href="{% url 'update_status' status.id %}">{% translate "Изменить" %}</a><br>
+            <a href="{% url 'delete_status' status.id %}">{% translate "Удалить" %}</a>
         </td>
     </tr>
     {% endfor %}
