@@ -20,13 +20,14 @@ from . import views
 # TODO: fix mypy
 import task_manager.users.urls  # type: ignore
 import task_manager.statuses.urls
+import task_manager.tasks.urls
 
 urlpatterns = [
+    path('', views.Index.as_view(), name='index'),
     path('admin/', admin.site.urls),
     path('login/', views.Login.as_view(), name='login'),
     path('logout/', views.Logout.as_view(), name='logout'),
-    path('', views.Index.as_view(), name='index')
+    *task_manager.users.urls.urlpatterns,
+    *task_manager.statuses.urls.urlpatterns,
+    *task_manager.tasks.urls.urlpatterns,
 ]
-
-urlpatterns.extend(task_manager.users.urls.urlpatterns)
-urlpatterns.extend(task_manager.statuses.urls.urlpatterns)
