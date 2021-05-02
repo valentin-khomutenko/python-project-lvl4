@@ -2,6 +2,7 @@ import pytest
 import django.test
 from http import HTTPStatus
 
+from task_manager.labels.models import Label
 from task_manager.statuses.models import Status
 from task_manager.tasks.models import Task
 
@@ -53,6 +54,32 @@ def test_create_task_fails_if_name_is_missing(logged_in_client: django.test.Clie
         'status': status.pk,
     })
     assert response.status_code == HTTPStatus.UNPROCESSABLE_ENTITY
+
+
+@pytest.mark.django_db
+def test_create_task_with_labels(logged_in_client: django.test.Client):
+    response = logged_in_client.get('/tasks/create/')
+    assert response.status_code == HTTPStatus.OK
+
+    status = Status(name='Open')
+    status.save()
+
+    label_IT = Label(name='IT')
+    label_IT.save()
+    label_QA = Label(name='QA')
+    label_QA.save()
+
+    response = logged_in_client.post('/tasks/create/', data={
+        'name': 'some task',
+        'description': 'some task description',
+        'status': status.pk,
+        'labels': [
+            label_IT.pk,
+            label_QA.pk,
+        ]
+    })
+    assert response.status_code == HTTPStatus.FOUND
+    assert response.url == '/tasks/'
 
 
 @pytest.mark.django_db
@@ -147,3 +174,48 @@ def test_update_task(logged_in_client: django.test.Client, make_test_user):
     assert task.description == 'New task description'
     assert task.executor == executor
     assert task.status == new_status
+
+
+@pytest.mark.django_db
+def test_update_task_with_labels(logged_in_client: django.test.Client, make_test_user):
+    status = Status(name='Open')
+    status.save()
+
+    user, _ = make_test_user(username='author')
+    task = Task(name='Some task', author=user, status=status)
+    task.save()
+
+    response = logged_in_client.get(f'/tasks/{task.pk}/update/')
+    assert response.status_code == HTTPStatus.OK
+
+    new_status = Status(name='In Progress')
+    new_status.save()
+
+    label_IT = Label(name='IT')
+    label_IT.save()
+    label_QA = Label(name='QA')
+    label_QA.save()
+
+    executor, _ = make_test_user(username='executor')
+    response = logged_in_client.post(f'/tasks/{task.pk}/update/', data={
+        'name': 'New task',
+        'description': 'New task description',
+        'executor': executor.pk,
+        'status': new_status.pk,
+        'labels': [
+            label_IT.pk,
+            label_QA.pk,
+        ]
+    })
+    assert response.status_code == HTTPStatus.FOUND
+    assert response.url == '/tasks/'
+
+    task.refresh_from_db()
+    assert task.name == 'New task'
+    assert task.description == 'New task description'
+    assert task.executor == executor
+    assert task.status == new_status
+
+    assert task.labels.count() == 2
+    assert task.labels.get(pk=label_IT.pk) == label_IT
+    assert task.labels.get(pk=label_QA.pk) == label_QA
