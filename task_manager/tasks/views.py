@@ -4,7 +4,6 @@ from django.views.generic import ListView, CreateView, DeleteView, UpdateView
 
 from task_manager.mixins.views import RaiseUnprocessableEnittyIfInvalidMixin
 from task_manager.tasks import models
-from task_manager.tasks.forms import TaskForm
 
 
 class ListTasks(LoginRequiredMixin, ListView):
@@ -15,8 +14,7 @@ class ListTasks(LoginRequiredMixin, ListView):
 class CreateTask(LoginRequiredMixin, RaiseUnprocessableEnittyIfInvalidMixin, CreateView):
     model = models.Task
     template_name = 'tasks/create.html'
-    form = TaskForm
-    fields = ('name', 'description', 'status', 'executor')
+    fields = ('name', 'description', 'executor', 'status', 'labels',)
     success_url = reverse_lazy('list_tasks')
 
     def form_valid(self, form):
@@ -35,4 +33,4 @@ class UpdateTask(LoginRequiredMixin, UpdateView):
     template_name = 'tasks/update.html'
     success_url = reverse_lazy('list_tasks')
 
-    fields = ('name', 'description', 'executor', 'status',)
+    fields = ('name', 'description', 'executor', 'status', 'labels',)

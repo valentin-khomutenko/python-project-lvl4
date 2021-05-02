@@ -17,10 +17,10 @@ from django.contrib import admin
 from django.urls import path
 from . import views
 
-# TODO: fix mypy
 import task_manager.users.urls
 import task_manager.statuses.urls
 import task_manager.tasks.urls
+import task_manager.labels.urls
 
 urlpatterns = [
     path('', views.Index.as_view(), name='index'),
@@ -30,4 +30,5 @@ urlpatterns = [
     *task_manager.users.urls.urlpatterns,
     *task_manager.statuses.urls.urlpatterns,
     *task_manager.tasks.urls.urlpatterns,
+    *task_manager.labels.urls.urlpatterns,
 ]

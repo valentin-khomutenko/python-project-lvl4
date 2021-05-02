@@ -2,7 +2,6 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DeleteView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from . import models
-from . import forms
 from task_manager.mixins.views import RaiseUnprocessableEnittyIfInvalidMixin
 
 
@@ -14,8 +13,8 @@ class ListStatuses(LoginRequiredMixin, ListView):
 class CreateStatus(LoginRequiredMixin, RaiseUnprocessableEnittyIfInvalidMixin, CreateView):
     model = models.Status
     success_url = reverse_lazy('list_statuses')
-    form_class = forms.StatusForm
     template_name = 'statuses/create.html'
+    fields = ('name',)
 
 
 class DeleteStatus(LoginRequiredMixin, DeleteView):
