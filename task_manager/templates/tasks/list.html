@@ -6,6 +6,10 @@
 {% block title %}{% block content_title %}{% translate "Tasks" %}{% endblock %}{% endblock %}
 {% block content_body %}
 <a href="{% url 'create_task' %}">{% translate "Create new" %}</a>
+<form method="get">
+    {{ filter.form.as_p }}
+<button type="submit">{% translate "Search" %}</button>
+</form>
 <table class="table table-striped text-left">
     <thead>
     <tr>
