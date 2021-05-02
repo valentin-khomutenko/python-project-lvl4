@@ -216,6 +216,7 @@ def test_update_task_with_labels(logged_in_client: django.test.Client, make_test
     assert task.executor == executor
     assert task.status == new_status
 
+    assert task.labels is not None
     assert task.labels.count() == 2
     assert task.labels.get(pk=label_IT.pk) == label_IT
     assert task.labels.get(pk=label_QA.pk) == label_QA
