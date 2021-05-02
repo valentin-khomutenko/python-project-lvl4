@@ -21,6 +21,27 @@ def test_get_tasks(logged_in_client: django.test.Client):
 
 
 @pytest.mark.django_db
+def test_get_tasks_with_filters(logged_in_client: django.test.Client, make_test_user):
+    status = Status(name='Open')
+    status.save()
+
+    executor, _ = make_test_user(username='exectuor')
+    author, _ = make_test_user(username='author')
+
+    label = Label(name='IT')
+    label.save()
+
+    task = Task(name='Task', author=author, executor=executor, status=status)
+    task.save()
+    task.labels.add(label)  # type: ignore
+    task.save()
+
+    response = logged_in_client.get(
+        f'/tasks/?status={status.pk}&executor={executor.pk}&label={label.pk}&self_task=on')
+    assert response.status_code == HTTPStatus.OK
+
+
+@pytest.mark.django_db
 def test_create_task_fails_if_not_logged_in(client: django.test.Client):
     response = client.get('/tasks/create/')
     assert response.status_code == HTTPStatus.FOUND

@@ -1,13 +1,15 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, DeleteView, UpdateView
+from django.views.generic import CreateView, DeleteView, UpdateView
+from django_filters.views import FilterView  # type: ignore
 
 from task_manager.mixins.views import RaiseUnprocessableEnittyIfInvalidMixin
 from task_manager.tasks import models
+from task_manager.tasks import filters
 
 
-class ListTasks(LoginRequiredMixin, ListView):
-    model = models.Task
+class ListTasks(LoginRequiredMixin, FilterView):
+    filterset_class = filters.TaskFilter
     template_name = 'tasks/list.html'
 
 
