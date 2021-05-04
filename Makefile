@@ -1,5 +1,5 @@
 up:
-	gunicorn task_manager.server.wsgi
+	gunicorn task_manager.wsgi
 
 up.dev:
 	poetry run python manage.py runserver

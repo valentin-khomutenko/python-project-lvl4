@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bootstrap4',
     'django_filters',
-    'task_manager.server',
+    'task_manager',
     'task_manager.users.apps.UsersConfig',
     'task_manager.statuses.apps.StatusesConfig',
     'task_manager.tasks.apps.TasksConfig',
@@ -64,7 +64,7 @@ MIDDLEWARE = [
     'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
 ]
 
-ROOT_URLCONF = 'task_manager.server.urls'
+ROOT_URLCONF = 'task_manager.urls'
 
 TEMPLATES = [
     {
@@ -84,7 +84,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'task_manager.server.wsgi.application'
+WSGI_APPLICATION = 'task_manager.wsgi.application'
 
 
 # Database
