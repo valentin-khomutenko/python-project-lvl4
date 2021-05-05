@@ -59,7 +59,7 @@ def test_delete_user(client: django.test.Client, make_test_user):
 
     response = client.post(f'/users/{user.id}/delete/')
     assert response.status_code == HTTPStatus.FOUND
-    assert response.url == '/login/'
+    assert response.url == '/users/'
 
     response = client.get(f'/users/{user.id}/delete/')
     assert response.status_code == HTTPStatus.NOT_FOUND
