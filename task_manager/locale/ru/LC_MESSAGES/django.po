@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 18:35+0300\n"
+"POT-Creation-Date: 2021-05-05 18:51+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,6 +19,15 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: statuses/models.py:9 templates/labels/list.html:13
+#: templates/statuses/list.html:13 templates/tasks/list.html:28
+msgid "Name"
+msgstr "Имя"
+
+#: statuses/views.py:18
+msgid "Status has been created"
+msgstr "Статус успешно создан"
 
 #: templates/base.html:17
 msgid "Trellolo"
@@ -91,20 +100,16 @@ msgstr "Вы уверены, что хотите удалить метку"
 msgid "Yes, delete"
 msgstr "Да, удалить"
 
-#: templates/labels/list.html:8 templates/statuses/list.html:8
-#: templates/tasks/list.html:8
-msgid "Create new"
-msgstr "Добавить новый"
+#: templates/labels/list.html:8
+#, fuzzy
+#| msgid "Create label"
+msgid "Create new label"
+msgstr "Добавить новую метку"
 
 #: templates/labels/list.html:12 templates/statuses/list.html:12
 #: templates/tasks/list.html:27 templates/users/list.html:11
 msgid "ID"
 msgstr "ID"
-
-#: templates/labels/list.html:13 templates/statuses/list.html:13
-#: templates/tasks/list.html:28
-msgid "Name"
-msgstr "Имя"
 
 #: templates/labels/list.html:14 templates/statuses/list.html:14
 #: templates/tasks/list.html:32 templates/users/list.html:14
@@ -143,6 +148,10 @@ msgstr "Удалить статус"
 msgid "Are you sure that you want to delete status"
 msgstr "Вы уверены, что хотите удалить статус"
 
+#: templates/statuses/list.html:8
+msgid "Create new status"
+msgstr "Создать статус"
+
 #: templates/statuses/update.html:6
 msgid "Edit status"
 msgstr "Изменить статус"
@@ -160,6 +169,12 @@ msgstr "Удалить задачу"
 #| msgid "Are you sure that you want to delete status"
 msgid "Are you sure that you want to delete task"
 msgstr "Вы уверены, что хотите удалить задачу"
+
+#: templates/tasks/list.html:8
+#, fuzzy
+#| msgid "Create task"
+msgid "Create new task"
+msgstr "Создать задачу"
 
 #: templates/tasks/list.html:18
 msgid "Search"
@@ -213,15 +228,15 @@ msgstr "Полное имя"
 msgid "Edit user"
 msgstr "Изменить пользователя"
 
-#: users/views.py:17
+#: users/views.py:18
 msgid "User has been created"
 msgstr "Пользователь успешно зарегистрирован"
 
-#: users/views.py:29
+#: users/views.py:30
 msgid "User has been deleted"
 msgstr "Пользователь успешно удалён"
 
-#: users/views.py:37
+#: users/views.py:40
 msgid "User has been updated"
 msgstr "Пользователь успешно изменён"
 
@@ -232,3 +247,6 @@ msgstr "Вы залогинены"
 #: views.py:27
 msgid "You are logged out"
 msgstr "Вы разлогинены"
+
+#~ msgid "Create new"
+#~ msgstr "Добавить новый"
