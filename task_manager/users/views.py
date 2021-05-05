@@ -6,7 +6,8 @@ from django.views.generic import CreateView, ListView, DeleteView, UpdateView
 
 from . import forms
 from . import mixins
-from task_manager.mixins.views import RaiseUnprocessableEnittyIfInvalidMixin
+from task_manager.mixins.views import RaiseUnprocessableEnittyIfInvalidMixin, \
+    SuccessMessageDeleteMixin
 
 
 class CreateUser(SuccessMessageMixin, RaiseUnprocessableEnittyIfInvalidMixin, CreateView):
@@ -22,10 +23,12 @@ class ListUsers(ListView):
     template_name = 'users/list.html'
 
 
-class DeleteUser(SuccessMessageMixin, mixins.CheckSelfUser, DeleteView):
+class DeleteUser(SuccessMessageDeleteMixin, mixins.CheckSelfUser, DeleteView):
     model = django.contrib.auth.get_user_model()
     template_name = 'users/delete.html'
-    success_url = reverse_lazy('login')
+    success_url = reverse_lazy('list_users')
+    success_message = _('User has been deleted')
+    # TODO: check if in use
 
 
 class UpdateUser(SuccessMessageMixin, RaiseUnprocessableEnittyIfInvalidMixin,
@@ -34,3 +37,4 @@ class UpdateUser(SuccessMessageMixin, RaiseUnprocessableEnittyIfInvalidMixin,
     template_name = 'users/update.html'
     form_class = forms.CreateUser
     success_url = reverse_lazy('list_users')
+    success_message = _('User has been updated')
