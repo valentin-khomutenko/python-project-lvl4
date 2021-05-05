@@ -1,6 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, DeleteView, UpdateView
+from django.views.generic import CreateView, DeleteView, UpdateView, DetailView
 from django_filters.views import FilterView  # type: ignore
 from django.contrib.messages.views import SuccessMessageMixin
 from django.utils.translation import gettext as _
@@ -42,3 +42,8 @@ class UpdateTask(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     success_message = _('Task has been updated')
 
     fields = ('name', 'description', 'executor', 'status', 'labels',)
+
+
+class TaskDetail(LoginRequiredMixin, DetailView):
+    model = models.Task
+    template_name = 'tasks/detail.html'
