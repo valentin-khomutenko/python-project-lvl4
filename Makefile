@@ -8,7 +8,7 @@ install:
 	poetry install
 
 format:
-	poetry run autopep8 -r --in-place task_manager tests
+	poetry run autopep8 -aa -r --in-place task_manager tests
 
 lint:
 	poetry run autopep8 -r --diff --exit-code task_manager tests

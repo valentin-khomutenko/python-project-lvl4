@@ -16,7 +16,8 @@ class ListTasks(LoginRequiredMixin, FilterView):
     template_name = 'tasks/list.html'
 
 
-class CreateTask(LoginRequiredMixin, RaiseUnprocessableEnittyIfInvalidMixin, SuccessMessageMixin, CreateView):
+class CreateTask(LoginRequiredMixin, RaiseUnprocessableEnittyIfInvalidMixin,
+                 SuccessMessageMixin, CreateView):
     model = models.Task
     template_name = 'tasks/create.html'
     fields = ('name', 'description', 'executor', 'status', 'labels',)

@@ -13,7 +13,8 @@ class ListStatuses(LoginRequiredMixin, ListView):
     template_name = 'statuses/list.html'
 
 
-class CreateStatus(LoginRequiredMixin, RaiseUnprocessableEnittyIfInvalidMixin, SuccessMessageMixin, CreateView):
+class CreateStatus(LoginRequiredMixin, RaiseUnprocessableEnittyIfInvalidMixin,
+                   SuccessMessageMixin, CreateView):
     model = models.Status
     success_url = reverse_lazy('list_statuses')
     success_message = _('Status has been created')
@@ -28,7 +29,8 @@ class DeleteStatus(LoginRequiredMixin, SuccessMessageDeleteMixin, DeleteView):
     success_message = _('Status has been deleted')
 
 
-class UpdateStatus(LoginRequiredMixin, RaiseUnprocessableEnittyIfInvalidMixin, SuccessMessageMixin, UpdateView):
+class UpdateStatus(LoginRequiredMixin, RaiseUnprocessableEnittyIfInvalidMixin,
+                   SuccessMessageMixin, UpdateView):
     model = models.Status
     template_name = 'statuses/update.html'
     success_url = reverse_lazy('list_statuses')

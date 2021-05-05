@@ -14,7 +14,8 @@ class ListLabels(LoginRequiredMixin, ListView):
     template_name = 'labels/list.html'
 
 
-class CreateLabel(LoginRequiredMixin, RaiseUnprocessableEnittyIfInvalidMixin, SuccessMessageMixin, CreateView):
+class CreateLabel(LoginRequiredMixin, RaiseUnprocessableEnittyIfInvalidMixin,
+                  SuccessMessageMixin, CreateView):
     model = models.Label
     template_name = 'labels/create.html'
 
@@ -23,14 +24,16 @@ class CreateLabel(LoginRequiredMixin, RaiseUnprocessableEnittyIfInvalidMixin, Su
     success_message = _('Label has been created')
 
 
-class DeleteLabel(LoginRequiredMixin, RaiseUnprocessableEnittyIfInvalidMixin, SuccessMessageDeleteMixin, DeleteView):
+class DeleteLabel(LoginRequiredMixin, RaiseUnprocessableEnittyIfInvalidMixin,
+                  SuccessMessageDeleteMixin, DeleteView):
     model = models.Label
     template_name = 'labels/delete.html'
     success_url = reverse_lazy('list_labels')
     success_message = _('Label has been deleted')
 
 
-class UpdateLabel(LoginRequiredMixin, RaiseUnprocessableEnittyIfInvalidMixin, SuccessMessageMixin, UpdateView):
+class UpdateLabel(LoginRequiredMixin, RaiseUnprocessableEnittyIfInvalidMixin,
+                  SuccessMessageMixin, UpdateView):
     model = models.Label
     template_name = 'labels/update.html'
     success_url = reverse_lazy('list_labels')
