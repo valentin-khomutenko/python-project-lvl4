@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-04 20:34+0300\n"
+"POT-Creation-Date: 2021-05-05 18:00+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -44,7 +44,7 @@ msgstr "Метки"
 msgid "Logout"
 msgstr "Выход"
 
-#: templates/base.html:59
+#: templates/base.html:59 templates/login.html:6
 msgid "Sign in"
 msgstr "Вход"
 
@@ -122,7 +122,7 @@ msgstr "Удалить"
 msgid "Edit label"
 msgstr "Изменить метку"
 
-#: templates/login.html:6 templates/login.html:12
+#: templates/login.html:12
 msgid "Login"
 msgstr "Войти"
 
