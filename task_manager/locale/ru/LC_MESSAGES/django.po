@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 19:49+0300\n"
+"POT-Creation-Date: 2021-05-05 20:03+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,39 +20,39 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: labels/models.py:6 statuses/models.py:9 tasks/models.py:10
+#: labels/models.py:6 statuses/models.py:8 tasks/models.py:10
 #: templates/labels/list.html:13 templates/statuses/list.html:13
 #: templates/tasks/list.html:28
 msgid "Name"
 msgstr "Имя"
 
-#: labels/models.py:7 statuses/models.py:10 tasks/models.py:16
+#: labels/models.py:7 statuses/models.py:9 tasks/models.py:22
 #: templates/labels/list.html:14 templates/statuses/list.html:14
 #: templates/tasks/list.html:32 templates/users/list.html:14
 msgid "Created at"
 msgstr "Время создания"
 
-#: labels/views.py:23
+#: labels/views.py:24
 msgid "Label has been created"
 msgstr "Метка успешно создана"
 
-#: labels/views.py:30
+#: labels/views.py:32
 msgid "Label has been deleted"
 msgstr "Метка успешно удалена"
 
-#: labels/views.py:37
+#: labels/views.py:40
 msgid "Label has been updated"
 msgstr "Метка успешно изменена"
 
-#: statuses/views.py:19
+#: statuses/views.py:20
 msgid "Status has been created"
 msgstr "Статус успешно создан"
 
-#: statuses/views.py:28
+#: statuses/views.py:29
 msgid "Status has been deleted"
 msgstr "Статус успешно удалён"
 
-#: statuses/views.py:35
+#: statuses/views.py:37
 msgid "Status has been updated"
 msgstr "Статус успешно изменён"
 
@@ -72,27 +72,27 @@ msgstr "Описание"
 msgid "Status"
 msgstr "Статус"
 
-#: tasks/models.py:14 templates/tasks/list.html:31
+#: tasks/models.py:19 templates/tasks/list.html:31
 msgid "Executor"
 msgstr "Исполнитель"
 
-#: tasks/models.py:15 templates/tasks/list.html:30
+#: tasks/models.py:21 templates/tasks/list.html:30
 msgid "Author"
 msgstr "Автор"
 
-#: tasks/models.py:18 templates/base.html:43 templates/labels/list.html:6
+#: tasks/models.py:24 templates/base.html:43 templates/labels/list.html:6
 msgid "Labels"
 msgstr "Метки"
 
-#: tasks/views.py:24
+#: tasks/views.py:25
 msgid "Task has been created"
 msgstr "Задача успешно создана"
 
-#: tasks/views.py:35
+#: tasks/views.py:36
 msgid "Task has been deleted"
 msgstr "Задача успешно удалена"
 
-#: tasks/views.py:42
+#: tasks/views.py:43
 msgid "Task has been updated"
 msgstr "Задача успешно изменена"
 
@@ -300,15 +300,20 @@ msgstr "Полное имя"
 msgid "Edit user"
 msgstr "Изменить пользователя"
 
-#: users/views.py:18
+#: users/views.py:20
 msgid "User has been created"
 msgstr "Пользователь успешно зарегистрирован"
 
-#: users/views.py:30
+#: users/views.py:32
 msgid "User has been deleted"
 msgstr "Пользователь успешно удалён"
 
-#: users/views.py:40
+#: users/views.py:38
+msgid ""
+"User cannot be deleted as they are referenced as either author or executor"
+msgstr "Пользователя нельзя удалить, потому что он используется в качестве автора или исполнителя в какой-то задаче"
+
+#: users/views.py:51
 msgid "User has been updated"
 msgstr "Пользователь успешно изменён"
 
