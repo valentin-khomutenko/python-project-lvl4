@@ -4,7 +4,8 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils.translation import gettext as _
 from . import models
-from task_manager.mixins.views import RaiseUnprocessableEnittyIfInvalidMixin
+from task_manager.mixins.views import RaiseUnprocessableEnittyIfInvalidMixin, \
+    SuccessMessageDeleteMixin
 
 
 class ListStatuses(LoginRequiredMixin, ListView):
@@ -20,14 +21,16 @@ class CreateStatus(LoginRequiredMixin, RaiseUnprocessableEnittyIfInvalidMixin, S
     fields = ('name',)
 
 
-class DeleteStatus(LoginRequiredMixin, DeleteView):
+class DeleteStatus(LoginRequiredMixin, SuccessMessageDeleteMixin, DeleteView):
     model = models.Status
     template_name = 'statuses/delete.html'
     success_url = reverse_lazy('list_statuses')
+    success_message = _('Status has been deleted')
 
 
-class UpdateStatus(LoginRequiredMixin, RaiseUnprocessableEnittyIfInvalidMixin, UpdateView):
+class UpdateStatus(LoginRequiredMixin, RaiseUnprocessableEnittyIfInvalidMixin, SuccessMessageMixin, UpdateView):
     model = models.Status
     template_name = 'statuses/update.html'
     success_url = reverse_lazy('list_statuses')
+    success_message = _('Status has been updated')
     fields = ('name',)
