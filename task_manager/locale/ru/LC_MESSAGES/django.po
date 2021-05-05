@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 18:00+0300\n"
+"POT-Creation-Date: 2021-05-05 18:15+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -208,3 +208,11 @@ msgstr "Полное имя"
 #: templates/users/update.html:6
 msgid "Edit user"
 msgstr "Изменить пользователя"
+
+#: views.py:18
+msgid "You are logged in"
+msgstr "Вы залогинены"
+
+#: views.py:27
+msgid "You are logged out"
+msgstr "Вы разлогинены"
