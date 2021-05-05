@@ -1,5 +1,6 @@
 import django.contrib.auth
 from django.contrib.messages.views import SuccessMessageMixin
+from django.utils.translation import gettext as _
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, DeleteView, UpdateView
 
@@ -13,6 +14,7 @@ class CreateUser(SuccessMessageMixin, RaiseUnprocessableEnittyIfInvalidMixin, Cr
     form_class = forms.CreateUser
     template_name = 'users/create.html'
     success_url = reverse_lazy('login')
+    success_message = _('User has been created')
 
 
 class ListUsers(ListView):

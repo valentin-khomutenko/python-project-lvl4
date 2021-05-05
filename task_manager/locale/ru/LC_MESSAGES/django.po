@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 18:15+0300\n"
+"POT-Creation-Date: 2021-05-05 18:27+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,7 +49,7 @@ msgid "Sign in"
 msgstr "Вход"
 
 #: templates/base.html:64
-msgid "Sign Up"
+msgid "Registration"
 msgstr "Регистрация"
 
 #: templates/index.html:10
@@ -178,14 +178,14 @@ msgid "Edit task"
 msgstr "Изменить задачу"
 
 #: templates/users/create.html:6
+#, fuzzy
+#| msgid "Create new"
 msgid "Create user"
-msgstr "Зарегистрироваться"
+msgstr "Добавить новый"
 
 #: templates/users/create.html:12
-#, fuzzy
-#| msgid "Sign Up"
 msgid "Sign up"
-msgstr "Зарегистрироваться"
+msgstr "Зарегистрировать"
 
 #: templates/users/delete.html:6 templates/users/delete.html:14
 msgid "Delete user"
@@ -208,6 +208,10 @@ msgstr "Полное имя"
 #: templates/users/update.html:6
 msgid "Edit user"
 msgstr "Изменить пользователя"
+
+#: users/views.py:17
+msgid "User has been created"
+msgstr "Пользователь успешно зарегистрирован"
 
 #: views.py:18
 msgid "You are logged in"
