@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 18:54+0300\n"
+"POT-Creation-Date: 2021-05-05 18:59+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,6 +19,18 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: labels/views.py:23
+msgid "Label has been created"
+msgstr "Метка успешно создана"
+
+#: labels/views.py:30
+msgid "Label has been deleted"
+msgstr "Метка успешно удалена"
+
+#: labels/views.py:37
+msgid "Label has been updated"
+msgstr "Метка успешно изменена"
 
 #: statuses/models.py:9 templates/labels/list.html:13
 #: templates/statuses/list.html:13 templates/tasks/list.html:28
@@ -109,10 +121,8 @@ msgid "Yes, delete"
 msgstr "Да, удалить"
 
 #: templates/labels/list.html:8
-#, fuzzy
-#| msgid "Create label"
 msgid "Create new label"
-msgstr "Добавить новую метку"
+msgstr "Создать метку"
 
 #: templates/labels/list.html:12 templates/statuses/list.html:12
 #: templates/tasks/list.html:27 templates/users/list.html:11
@@ -173,14 +183,10 @@ msgid "Delete task"
 msgstr "Удалить задачу"
 
 #: templates/tasks/delete.html:9
-#, fuzzy
-#| msgid "Are you sure that you want to delete status"
 msgid "Are you sure that you want to delete task"
 msgstr "Вы уверены, что хотите удалить задачу"
 
 #: templates/tasks/list.html:8
-#, fuzzy
-#| msgid "Create task"
 msgid "Create new task"
 msgstr "Создать задачу"
 
@@ -205,8 +211,6 @@ msgid "Edit task"
 msgstr "Изменить задачу"
 
 #: templates/users/create.html:6
-#, fuzzy
-#| msgid "Create new"
 msgid "Create user"
 msgstr "Добавить новый"
 
@@ -223,10 +227,8 @@ msgid "Are you sure that you want to delete user"
 msgstr "Вы уверены, что хотите удалить пользователя"
 
 #: templates/users/list.html:12
-#, fuzzy
-#| msgid "Users"
 msgid "Username"
-msgstr "Пользователи"
+msgstr "Имя пользователя"
 
 #: templates/users/list.html:13
 msgid "Full name"
