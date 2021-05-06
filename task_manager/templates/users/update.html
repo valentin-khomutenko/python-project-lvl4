@@ -1,16 +1,6 @@
-{% extends "content.html" %}
+{% extends "edit_page.html" %}
 
 {% load i18n %}
 {% load bootstrap4 %}
 
 {% block title %}{% block content_title %}{% translate "Edit user" %}{% endblock %}{% endblock %}
-{% block content_body %}
-<form method="post">
-    {% csrf_token %}
-    {% bootstrap_form form %}
-    {% buttons %}
-    <input class="btn btn-primary" type="submit" value="{% translate 'Edit' %}">
-    {% endbuttons %}
-</form>
-{% endblock %}
-

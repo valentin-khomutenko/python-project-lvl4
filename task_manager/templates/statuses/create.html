@@ -1,16 +1,6 @@
-{% extends "content.html" %}
+{% extends "create_page.html" %}
 
 {% load i18n %}
-{% load bootstrap4 %}
 
 {% block title %}{% block content_title %}{% translate "Create status" %}{% endblock %}{% endblock %}
-{% block content_body %}
-<form method="post">
-    {% csrf_token %}
-    {% bootstrap_form form %}
-    {% buttons %}
-    <input class="btn btn-primary" type="submit" value="{% translate 'Create' %}">
-    {% endbuttons %}
-</form>
-{% endblock %}
-
+{% block button_text %}{% translate 'Create' %}{% endblock %}

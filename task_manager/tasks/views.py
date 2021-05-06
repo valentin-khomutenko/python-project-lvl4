@@ -9,6 +9,7 @@ from task_manager.mixins.views import RaiseUnprocessableEnittyIfInvalidMixin, \
     SuccessMessageDeleteMixin
 from task_manager.tasks import models
 from task_manager.tasks import filters
+from task_manager.tasks.mixins import UserIsTaskAuthorMixin
 
 
 class ListTasks(LoginRequiredMixin, FilterView):
@@ -29,7 +30,7 @@ class CreateTask(LoginRequiredMixin, RaiseUnprocessableEnittyIfInvalidMixin,
         return super().form_valid(form)
 
 
-class DeleteTask(LoginRequiredMixin, SuccessMessageDeleteMixin, DeleteView):
+class DeleteTask(LoginRequiredMixin, UserIsTaskAuthorMixin, SuccessMessageDeleteMixin, DeleteView):
     model = models.Task
     template_name = 'tasks/delete.html'
     success_url = reverse_lazy('list_tasks')
