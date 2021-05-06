@@ -31,6 +31,8 @@ class DeleteLabel(LoginRequiredMixin, RaiseUnprocessableEnittyIfInvalidMixin,
     success_url = reverse_lazy('list_labels')
     success_message = _('Label has been deleted')
 
+    # TODO: нельзя удалить лейбл, если он используется
+
 
 class UpdateLabel(LoginRequiredMixin, RaiseUnprocessableEnittyIfInvalidMixin,
                   SuccessMessageMixin, UpdateView):

@@ -125,7 +125,7 @@ def test_delete_task_fails_if_not_logged_in(client: django.test.Client, make_tes
 
 
 @pytest.mark.django_db
-def test_delete_status(logged_in_client: django.test.Client, make_test_user):
+def test_delete_task_fails_if_not_an_author(logged_in_client: django.test.Client, make_test_user):
     status = Status(name='Open')
     status.save()
 
@@ -134,13 +134,32 @@ def test_delete_status(logged_in_client: django.test.Client, make_test_user):
     task.save()
 
     response = logged_in_client.get(f'/tasks/{task.pk}/delete/')
-    assert response.status_code == HTTPStatus.OK
+    assert response.status_code == HTTPStatus.FORBIDDEN
 
     response = logged_in_client.post(f'/tasks/{task.pk}/delete/')
+    assert response.status_code == HTTPStatus.FORBIDDEN
+
+    response = logged_in_client.get(f'/tasks/{task.pk}')
+    assert response.status_code == HTTPStatus.OK
+
+
+@pytest.mark.django_db
+def test_delete_task(client: django.test.Client, make_test_user):
+    status = Status(name='Open')
+    status.save()
+    user, password = make_test_user()
+    client.login(username=user.username, password=password)
+    task = Task(name='Some task', author=user, status=status)
+    task.save()
+
+    response = client.get(f'/tasks/{task.pk}/delete/')
+    assert response.status_code == HTTPStatus.OK
+
+    response = client.post(f'/tasks/{task.pk}/delete/')
     assert response.status_code == HTTPStatus.FOUND
     assert response.url == '/tasks/'
 
-    response = logged_in_client.get(f'/tasks/{task.pk}/delete/')
+    response = client.get(f'/tasks/{task.pk}/delete/')
     assert response.status_code == HTTPStatus.NOT_FOUND
 
 

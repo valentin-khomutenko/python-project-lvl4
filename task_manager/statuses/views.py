@@ -27,6 +27,7 @@ class DeleteStatus(LoginRequiredMixin, SuccessMessageDeleteMixin, DeleteView):
     template_name = 'statuses/delete.html'
     success_url = reverse_lazy('list_statuses')
     success_message = _('Status has been deleted')
+    # TODO: нельзя удалить статус, если он назначен задаче
 
 
 class UpdateStatus(LoginRequiredMixin, RaiseUnprocessableEnittyIfInvalidMixin,
