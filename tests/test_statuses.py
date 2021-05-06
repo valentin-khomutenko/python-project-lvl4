@@ -74,7 +74,7 @@ def test_delete_status_fails_if_in_use(logged_in_client: django.test.Client, mak
 
     response = logged_in_client.delete(f'/statuses/{status.pk}/delete/')
     assert response.status_code == HTTPStatus.FOUND
-    assert response.url == f'/statuses/'
+    assert response.url == '/statuses/'
 
     status.refresh_from_db()
     assert status.pk is not None

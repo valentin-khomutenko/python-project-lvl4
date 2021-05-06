@@ -72,7 +72,7 @@ def test_delete_label_fails_if_in_use(logged_in_client: django.test.Client, make
 
     task = Task(name='task', author=user, status=status)
     task.save()
-    task.labels.add(label)
+    task.labels.add(label)  # type: ignore
     task.save()
 
     response = logged_in_client.get(f'/labels/{label.pk}/delete/')
