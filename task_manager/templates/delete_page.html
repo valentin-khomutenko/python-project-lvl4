@@ -1,0 +1,16 @@
+{% extends "content.html" %}
+
+{% load bootstrap4 %}
+{% load i18n %}
+{% block content_body %}
+<p>
+    {% block confirm_message %}{% endblock %}
+</p>
+<form method="post" class="mt-4">
+    {% csrf_token %}
+    {% buttons %}
+    <input class="btn btn-danger" type="submit" value="{% translate 'Yes, delete' %}">
+    {% endbuttons %}
+</form>
+{% endblock %}
+

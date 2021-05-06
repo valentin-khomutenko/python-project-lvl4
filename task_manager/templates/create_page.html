@@ -1,0 +1,14 @@
+{% extends "content.html" %}
+
+{% load bootstrap4 %}
+{% load i18n %}
+{% block content_body %}
+<form method="post">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% buttons %}
+    <input class="btn btn-primary" type="submit" value="{% block button_text %}{% endblock %}">
+    {% endbuttons %}
+</form>
+{% endblock %}
+
