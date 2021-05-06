@@ -29,3 +29,6 @@ compiled-locales:
 	cd task_manager && poetry run django-admin compilemessages -l ru
 
 self-check: format lint test
+
+deploy:
+	branch=$$(git branch --show-current) && echo $$branch && read -p "Are you sure that you want to deploy branch $${branch} to production? (y/n)" confirm && [[ $$confirm == [yY] ]] && git push heroku $$branch:main || exit 1
